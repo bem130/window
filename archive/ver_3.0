@@ -1,0 +1,303 @@
+<!--
+    Haruki
+    version 21.6.28.19 - 3.0
+-->
+<!DOCTYPE html>
+<html style="width: 100vw;height: 150vh;">
+    <head>
+        <meta name="keywords" content="Haruki,haruki,haruki1234,harukisite,HarukiSite,趣味のサイト,har,@hAru,Hs,@Har27612855">
+        <meta name="description" content="iframeが許可されているサイトを内部で表示できます">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+            <meta name="application-name" content="HarukiSite"/>
+            <link rel="shortcut icon" href="https://link-page.github.io/icon/J.png">
+            <link rel="icon" type="image/png" href="https://link-page.github.io/icon/icon (40).png">
+            <link rel="apple-touch-icon" href="https://link-page.github.io/icon/J.png">
+        <title>harukisite - New Menu</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script type="text/javascript" src="../mainsite/jquery/jquery-ui.js"></script>
+        <script type="text/javascript" src="../mainsite/jquery/jquery.ui.touch-punch.js"></script>
+        <link rel="stylesheet" href="../mainsite/jquery/jquery-ui.css">
+        <meta charset="utf-8">
+        <link href="font.css" rel="stylesheet">
+        <link href="default.css" rel="stylesheet">
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+        <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDLLs9K4E9UVTmP2XaHhn_UzXtlN1nCDXc",
+            authDomain: "github-b0aea.firebaseapp.com",
+            projectId: "github-b0aea",
+            storageBucket: "github-b0aea.appspot.com",
+            messagingSenderId: "539611850738",
+            appId: "1:539611850738:web:57da8d1bd3bcf69a7a2d6b",
+            measurementId: "G-F2XPLPFDJ5"
+        };
+        firebase.initializeApp(firebaseConfig);
+        if (location.hostname == "haruki1234.github.io") {
+            firebase.analytics();
+        }
+        </script>
+            <script>
+                    sessionStorage.os = JSON.stringify({
+                        version : "1.0",
+                        name : "shwgos",
+                    })
+            </script>
+    </head>
+    <body id="body">
+        <div style="margin: 10px;background: rgba(255, 255, 255, 0.1);width: calc(100%-100px);" id="javascriptcheckarea">
+            <div>
+                <div>
+                    <center>
+                        <div style="background: rgba(200,150,100,0.6);border-radius: 15px;margin: 50px;padding: 10px;">
+                            <h2 style="padding: 0px;margin: 10px;font-size: 25px;">Javascript有効化チェッカー</h2>
+                            <div>
+                                <p id="javascriptchecktext123456789" style="padding: 0px;margin: 5px;font-size: 23px;">Javascriptが無効になっている可能性があります。</p>
+                            </div>
+                            <script>document.getElementById("javascriptchecktext123456789").innerHTML="Javascriptは有効です。";document.getElementById("javascriptcheckarea").style.display="none"</script>
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div style="position: absolute;left: 0px;top: 0px;z-index: -1000;width: 100vw;height: calc(100vh + 140px);margin: 0;padding: 0;z-index: -10003;position: fixed;" id="desktop">
+            <div style="width: 100vw;height: 100vh;margin: 0;padding: 0;position: fixed;" id="background">
+                <div style="background-color: rgb(0,128,128);width: 100%;height: 100%;margin: 0;padding: 0;"></div>
+            </div>
+            <div style="width: 100%;margin: 0;padding: 0;position: absolute;top: 0;left: 0;" id="icon">
+            </div>
+        </div>
+        <div id="window" style="position: absolute;top: 0px;left: 0px;"></div>
+    </body>
+    <script>
+        desktop = [
+            ["Bing","openw('https://bing.com','bing','https://www.bing.com/sa/simg/favicon-2x.ico')","https://www.bing.com/sa/simg/favicon-2x.ico"],
+            ["メモ","openw('../mainsite/memo.html','haruki1234','https://link-page.github.io/icon/icon (38).png')","https://link-page.github.io/icon/icon (38).png"],
+            ["文字列繰り返し","openw('../mainsite/rere.html','haruki1234','https://link-page.github.io/icon/icon (31).png')","https://link-page.github.io/icon/icon (31).png"],
+            ["閃光おみくじ","openw('../mainsite/omikujiflash.html','haruki1234','https://link-page.github.io/icon/icon (32).png')","https://link-page.github.io/icon/icon (32).png"],
+            ["閃光アルファベット&数字","openw('../mainsite/alflash.html','haruki1234','https://link-page.github.io/icon/icon (1).png')","https://link-page.github.io/icon/icon (1).png"],
+            ["ランダムなアルファベット","openw('../mainsite/raa.html','haruki1234','https://link-page.github.io/icon/icon (33).png')","https://link-page.github.io/icon/icon (33).png"],
+            ["数字並び替え","openw('../mainsite/sort.html','haruki1234','https://link-page.github.io/icon/icon (34).png')","https://link-page.github.io/icon/icon (34).png"],
+            ["全自動じゃんけん","openw('../mainsite/jyannkenn.html','haruki1234','https://link-page.github.io/icon/icon (37).png')","https://link-page.github.io/icon/icon (37).png"],
+            ["じゃんけん!","openw('../mainsite/letsjyankenn.html','haruki1234','https://link-page.github.io/icon/icon (36).png')","https://link-page.github.io/icon/icon (36).png"],
+            ["おみくじ","openw('../mainsite/omikujimenu.html','haruki1234','https://link-page.github.io/icon/icon (24).png')","https://link-page.github.io/icon/icon (24).png"],
+            ["jsメッセージ作成","openw('../mainsite/mmrt.html','haruki1234','https://link-page.github.io/icon/icon (25).png')","https://link-page.github.io/icon/icon (25).png"],
+            ["メッセージ作成","openw('../mainsite/makemessage_text.html','haruki1234','https://link-page.github.io/icon/icon (25).png')","https://link-page.github.io/icon/icon (25).png"],
+            ["Base64","openw('../mainsite/base64.html','haruki1234','https://link-page.github.io/icon/icon (27).png')","https://link-page.github.io/icon/icon (27).png"],
+            ["なんか綺麗な奴","openw('../mainsite/sinwave.html','haruki1234','https://link-page.github.io/icon/icon (28).png')","https://link-page.github.io/icon/icon (28).png"],
+            ["背景","openw('../mainsite/background.html','haruki1234','https://link-page.github.io/icon/icon (29).png')","https://link-page.github.io/icon/icon (29).png"],
+            ["python - じゃんけん","openw('../janken/index.html','haruki1234','https://link-page.github.io/icon/Janken.png')","https://link-page.github.io/icon/Janken.png"],
+            ["pythonで適当に作った奴","openw('../pythons/index.html','haruki1234')"],
+            ["C#で適当に作った奴","openw('../winapp_cs/index.html','haruki1234')"],
+            ["旧サイト","openw('../old-sites/index.html','haruki1234')"],
+            ["DiscordのBot(自作)","openw('../mainsite/discord-bot.html','haruki1234')"],
+            ["Javascript有効チェッカー","openw('../mainsite/js.html','haruki1234')"],
+            ["テキスト数字変換","openw('../mainsite/2.html','haruki1234')"],
+            ["問題を報告","openw('../mainsite/send-issue.html','ISSUE')"],
+        ]
+
+
+        {
+            function para_get(){
+                var url_search = location.search.substr(1).split('&');
+                var para = [];
+                var key = null;
+                for(var i = 0 ; i < url_search.length ; i++){
+                    key = url_search[i].split("=");
+                    para[key[0]] = key[1];
+                }
+                return (para);
+            }
+            message = para_get();
+            if (message.desktop == null){
+                tmp = ""
+            }
+            else {
+                usericons = JSON.parse(decodeURIComponent(message.desktop));
+                for(i=0;i<usericons.length;i++){
+                    desktop.unshift(usericons[i]);
+                }
+            }
+        }
+
+        outputhtml = ""
+        for(i=0;i<desktop.length;i++){
+            if (desktop[i][2] == null) {
+                desktop[i][2] = "https://link-page.github.io/icon/time.gif"
+            }
+            outputhtml += `<button class="desktopicon" onclick="`+desktop[i][1]+`"><div class="indesktopicon"><img class="desktopiconimg" src="`+desktop[i][2]+`"><span class="desktopicontxt">`+desktop[i][0]+`</span></div></button>`
+        }
+        document.getElementById("icon").innerHTML = outputhtml
+
+        function makeURLpara(parast) {
+            return encodeURIComponent(JSON.stringify(parast))
+        }
+    </script>
+    <script>
+    openwindow = 0;
+    function openw(url,title,icon) {
+        if (icon == null) {
+            icon = "https://link-page.github.io/icon/time.gif"
+        }
+        new_element = document.createElement('div')
+        new_element.innerHTML = `
+                <div>
+                    <div id="draggwindow`+openwindow+`" class="draggable dragwindow resize window" style="position: fixed;">
+                        <div class="titlebar">
+                            <button style="float: right;" onclick="$(this).parentsUntil()[3].remove();" class="titlebutton redbutton" style=""> × </button>
+                            <button style="float: right;" onclick="$(this).parentsUntil()[1].style.width=[document.body.clientWidth-7]+'px';$(this).parentsUntil()[1].style.height=[document.documentElement.clientHeight-10]+'px';$(this).parentsUntil()[1].style.left='0';$(this).parentsUntil()[1].style.top='0'" class="titlebutton"> □ </button>
+                            <button style="float: right;" onclick="$(this).parentsUntil()[2].style.display = 'none'" class="titlebutton"> ― </button>
+                            <img src="`+icon+`" style="height:20px" class="titlebaricon">
+                            <span style="vertical-align:top;font-size:19px" class="titlebartitle">`+title+`</span>
+                        </div>
+                        <div class="iframepea" style="width:calc(100% - 20px);height:calc(100% - 50px)">
+                            <iframe class="windowiframe" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" src="`+url+`" style="width:100%;height:100%"></iframe>
+                        </div>
+                    </div>
+                </div>
+                `
+        document.getElementById("window").appendChild(new_element)
+
+        $(function() {
+            $('.movetable').sortable({
+                handle: 'div.titlebar',
+                axis: 'y'
+            });
+            $('.draggable').draggable({
+                handle: 'div.titlebar',
+                containment: '#desktop',
+                stack: '.draggable'
+            });
+            $(".resize").resizable({
+                handles: 'nw,n,ne,w,e,sw,s,se',
+                minWidth: '350',
+                minHeight: '150',
+            });
+            openwindow++;
+        });
+    }
+    </script>
+</html>
+<style>
+    body::-webkit-scrollbar {
+        display: none;
+    }
+    * {
+        margin: 2px;
+        padding: 2px;
+        font-family: 'DotGothic16';
+        text-align: left;
+        user-select: none;
+        -moz-user-select: none; 
+        -webkit-user-select: none;
+        -ms-user-select: none; 
+    }
+    li {
+        list-style:none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    input {
+        margin: 0;
+        padding: 0;
+    }
+    button ,a {
+        border-radius: 0px;
+        box-shadow: 2px 2px rgba(0,0,0,0.8);
+        height: 37px;
+        padding-right: 10px;
+        padding-left: 10px;
+        background: rgba(255, 255, 255, 0.5);
+        font-size: 23px;
+        text-decoration: none;
+        color: black;
+    }
+    button:hover , a:hover {
+        text-decoration: none;
+        background: rgba(240, 240, 240, 0.5);
+    }
+    button:active , a:active {
+        text-decoration: none;
+        box-shadow: 2px 2px rgba(0,0,0,0.8) inset;
+    }
+    .window {
+        background:rgb(200,200,200,1);
+        width:600px;
+        height:500px;
+        z-index:1;
+        box-shadow: 2px 2px rgba(0,0,0,0.5),-1px -1px rgba(0,0,0,0.4);
+    }
+    .window:hover {
+        box-shadow: 2px 2px rgba(0,0,0,0.6),-1px -1px rgba(0,0,0,0.5);
+    }
+    button.titlebutton {
+        box-shadow: 1px 1px rgba(0,0,0,0.4);
+        border-radius: 0px;
+        text-align: center;
+        font-size: 14px;
+        height: 25px;
+        margin: 0;
+    }
+    button.titlebutton:hover {
+        background: rgba(240, 240, 240, 0.5);
+    }
+    button.titlebutton:active {
+        box-shadow: 1px 1px rgba(0,0,0,0.5) inset;
+    }
+    .titlebar {
+        height: 25px;
+        padding: 0;
+        margin: 4px;
+    }
+    .titlebaricon {
+        box-shadow: -1px -1px rgba(0,0,0,0.4) inset;
+    }
+    .desktopicon,.icon {
+        align-items: stretch;
+        z-index: 1;
+        width: 175px;
+        height: 110px;
+        font-size: 14px;
+        text-align: center;
+        vertical-align: top;
+        margin: 2.5px;
+        padding: 5px;
+        background: none;
+        box-shadow: none;
+        border: none;
+    }
+    .desktopicon:hover,.icon:hover {
+        background-color: none;
+        border-color: rgba(0,0,0,0.1);
+    }
+    .indesktopicon,.inicon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: rgb(255,255,255);
+        font-family: "ntihayafont+";
+        text-shadow:
+            1px 0 2px rgb(0,0,0),
+            0px 1px 2px rgb(0,0,0),
+            -1px 0px 1px rgb(0,0,0),
+            0px -1px 1px rgb(0,0,0);
+    }
+    .desktopiconimg {
+        height: 75px;
+        width: 75px;
+        margin: 0px;
+        padding: 0px;
+    }
+    .desktopicontxt {
+        margin: 0px;
+        margin-top: 2px;
+        padding: 0px;
+    }
+</style>
