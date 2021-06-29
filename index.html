@@ -1,6 +1,6 @@
 <!--
     Haruki
-    version 21.6.28.19 - 3.0
+    version 21.6.29.20 - 4.0
 -->
 <!DOCTYPE html>
 <html style="width: 100vw;height: 150vh;">
@@ -19,8 +19,6 @@
         <script type="text/javascript" src="../mainsite/jquery/jquery.ui.touch-punch.js"></script>
         <link rel="stylesheet" href="../mainsite/jquery/jquery-ui.css">
         <meta charset="utf-8">
-        <link href="font.css" rel="stylesheet">
-        <link href="default.css" rel="stylesheet">
         <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
         <script>
@@ -41,7 +39,7 @@
             <script>
                     sessionStorage.os = JSON.stringify({
                         version : "3.0",
-                        name : "shwgos",
+                        name : "shwgOS",
                     })
             </script>
     </head>
@@ -61,17 +59,48 @@
                 </div>
             </div>
         </div>
-        <div style="position: absolute;left: 0px;top: 0px;z-index: -1000;width: 100vw;height: calc(100vh + 140px);margin: 0;padding: 0;z-index: -10003;position: fixed;" id="desktop">
+        <div id="desktop" class="desktop">
             <div style="width: 100vw;height: 100vh;margin: 0;padding: 0;position: fixed;" id="background">
                 <div style="background-color: rgb(0,128,128);width: 100%;height: 100%;margin: 0;padding: 0;"></div>
+            </div>
+            <div class="unmenuback" style="user-select: none;">
+
+                <button id="start" class="unmenu startbutton" style="box-shadow: none;height: 100%;width: 150px;margin: 0px;padding: 0px;border: 0px solid;outline: none;z-index: 100;background: rgba(255, 255, 255, 0);float: left;" onclick='if(document.getElementById("startmenu").style.display != "block"){setTimeout(`document.getElementById("startmenu").style.display = "block"`,0)}'>
+                    <div class="startbuttonarea">
+                        <img src="showgOS.png" class="startbuttonimg">
+                        <span style="vertical-align: top;">Start</span>
+                    </div>
+                </button>
+                <div id="taskbar" style="float: left;left: 60px;position: absolute;">
+                </div>
+                <div style="float: right;" class="clockcalendar">
+                    <center>
+                        <button id="clock" class="clock">00:00:00</button><br>
+                    </center>
+                </div>
+            </div>
+            <div id="startmenu" class="startmenu">
+                <div class="stlm" style="display: none;">
+                        <li>
+                            <button id="reload" class="stlmenur" onclick='location.reload()'>電源</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="scroll">
+                    <ul id="startscrollarea">
+                    </ul>
+                </div>
+            </div>
+            <div style="width: 100%;margin: 0;padding: 0;position: absolute;top: 0;left: 0;" id="starticon">
             </div>
             <div style="width: 100%;margin: 0;padding: 0;position: absolute;top: 0;left: 0;" id="icon">
             </div>
         </div>
         <div id="window" style="position: absolute;top: 0px;left: 0px;"></div>
+        <div style="width: 100%;height: calc(100vh - 55px);margin: 0;padding: 0;position: fixed;top: 0;left: 0;z-index: -50000;" id="destop" class="destop"></div>
     </body>
     <script>
-        desktop = [
+        software = [
             ["Bing","openw('https://bing.com','bing','https://www.bing.com/sa/simg/favicon-2x.ico')","https://www.bing.com/sa/simg/favicon-2x.ico"],
             ["メモ","openw('../mainsite/memo.html','haruki1234','https://link-page.github.io/icon/icon (38).png')","https://link-page.github.io/icon/icon (38).png"],
             ["文字列繰り返し","openw('../mainsite/rere.html','haruki1234','https://link-page.github.io/icon/icon (31).png')","https://link-page.github.io/icon/icon (31).png"],
@@ -96,8 +125,8 @@
             ["テキスト数字変換","openw('../mainsite/2.html','haruki1234')"],
             ["問題を報告","openw('../mainsite/send-issue.html','ISSUE')"],
         ]
-
-
+        desktop = software;
+        startmenu = software;
         {
             function para_get(){
                 var url_search = location.search.substr(1).split('&');
@@ -110,6 +139,15 @@
                 return (para);
             }
             message = para_get();
+            if (message.software == null){
+                tmp = ""
+            }
+            else {
+                usericons = JSON.parse(decodeURIComponent(message.software));
+                for(i=0;i<usericons.length;i++){
+                    software.unshift(usericons[i]);
+                }
+            }
             if (message.desktop == null){
                 tmp = ""
             }
@@ -117,6 +155,15 @@
                 usericons = JSON.parse(decodeURIComponent(message.desktop));
                 for(i=0;i<usericons.length;i++){
                     desktop.unshift(usericons[i]);
+                }
+            }
+            if (message.startmenu == null){
+                tmp = ""
+            }
+            else {
+                usericons = JSON.parse(decodeURIComponent(message.startmenu));
+                for(i=0;i<usericons.length;i++){
+                    startmenu.unshift(usericons[i]);
                 }
             }
         }
@@ -130,11 +177,24 @@
         }
         document.getElementById("icon").innerHTML = outputhtml
 
-        function makeURLpara(parast) {
-            return encodeURIComponent(JSON.stringify(parast))
+        outputhtml = ""
+        for(i=0;i<startmenu.length;i++){
+            if (startmenu[i][2] == null) {
+                startmenu[i][2] = "https://link-page.github.io/icon/time.gif"
+            }
+            outputhtml += `<li><button id="rere" class="stsmenu" onclick="`+startmenu[i][1]+`">`+startmenu[i][0]+`</button></li>`
         }
-    </script>
-    <script>
+        outputhtml += `<li><button id="reload" class="stsmenu" onclick='location.reload()'>電源</button></li>`
+        document.getElementById("startscrollarea").innerHTML = outputhtml;
+    
+
+    document.oncontextmenu = function() {if(document.getElementById("startmenu").style.display != "block"){setTimeout(`document.getElementById("startmenu").style.display = "block"`,0)};$(function() {$(".desktopsoft").css({zIndex:-100});});return false}
+
+
+    document.onclick = function() {
+        document.getElementById("startmenu").style.display = "none"
+    }
+
     openwindow = 0;
     function openw(url,title,icon) {
         if (icon == null) {
@@ -143,16 +203,16 @@
         new_element = document.createElement('div')
         new_element.innerHTML = `
                 <div>
-                    <div id="draggwindow`+openwindow+`" class="draggable dragwindow resize window" style="position: fixed;">
+                    <div id="draggwindow`+openwindow+`" class="draggable dragwindow resize window">
                         <div class="titlebar">
-                            <button style="float: right;" onclick="$(this).parentsUntil()[3].remove();" class="titlebutton redbutton" style=""> × </button>
-                            <button style="float: right;" onclick="$(this).parentsUntil()[1].style.width=[document.body.clientWidth-7]+'px';$(this).parentsUntil()[1].style.height=[document.documentElement.clientHeight-10]+'px';$(this).parentsUntil()[1].style.left='0';$(this).parentsUntil()[1].style.top='0'" class="titlebutton"> □ </button>
-                            <button style="float: right;" onclick="$(this).parentsUntil()[2].style.display = 'none'" class="titlebutton"> ― </button>
-                            <img src="`+icon+`" style="height:20px" class="titlebaricon">
-                            <span style="vertical-align:top;font-size:19px" class="titlebartitle">`+title+`</span>
+                            <button onclick="$(this).parentsUntil()[3].remove();" class="titlebutton redbutton" style=""> × </button>
+                            <button onclick="$(this).parentsUntil()[1].style.width=[document.body.clientWidth-7]+'px';$(this).parentsUntil()[1].style.height=[document.documentElement.clientHeight-65]+'px';$(this).parentsUntil()[1].style.left='0';$(this).parentsUntil()[1].style.top='0'" class="titlebutton"> □ </button>
+                            <button onclick="$(this).parentsUntil()[2].style.display = 'none'" class="titlebutton"> ― </button>
+                            <img src="`+icon+`" class="titlebaricon">
+                            <span class="titlebartitle">`+title+`</span>
                         </div>
-                        <div class="iframepea" style="width:calc(100% - 20px);height:calc(100% - 50px)">
-                            <iframe class="windowiframe" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" src="`+url+`" style="width:100%;height:100%"></iframe>
+                        <div class="iframepea">
+                            <iframe class="windowiframe" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" src="`+url+`"></iframe>
                         </div>
                     </div>
                 </div>
@@ -166,18 +226,38 @@
             });
             $('.draggable').draggable({
                 handle: 'div.titlebar',
-                containment: '#desktop',
+                containment: '#destop',
                 stack: '.draggable'
             });
             $(".resize").resizable({
                 handles: 'nw,n,ne,w,e,sw,s,se',
-                minWidth: '350',
+                minWidth: '260',
                 minHeight: '150',
             });
             openwindow++;
         });
     }
-    </script>
+    
+
+    function set2fig(num) {
+      // 桁数が1桁だったら先頭に0を加えて2桁に調整する
+      var ret;
+      if( num < 10 ) { ret = "0" + num; }
+      else { ret = num; }
+      return ret;
+   }
+   function showClock() {
+      var nowTime = new Date();
+      var nowHour = set2fig( nowTime.getHours() );
+      var nowMin  = set2fig( nowTime.getMinutes() );
+      var nowSec  = set2fig( nowTime.getSeconds() );
+      var msg = "🔉　" + nowHour + ":" + nowMin + ":" + nowSec + "";
+      document.getElementById("clock").innerHTML = msg;
+   }
+   setInterval('showClock()',1000);
+   showClock();
+   </script>
+   
 </html>
 <style>
     body::-webkit-scrollbar {
@@ -194,7 +274,7 @@
         -ms-user-select: none; 
     }
     li {
-        list-style:none;
+        list-style: none;
     }
     a:hover {
         text-decoration: underline;
@@ -224,10 +304,11 @@
     }
     .window {
         background:rgb(200,200,200,1);
-        width:600px;
-        height:500px;
-        z-index:1;
+        width: 500px;
+        height: 350px;
+        z-index: 1;
         box-shadow: 2px 2px rgba(0,0,0,0.5),-1px -1px rgba(0,0,0,0.4);
+        position: fixed;
     }
     .window:hover {
         box-shadow: 2px 2px rgba(0,0,0,0.6),-1px -1px rgba(0,0,0,0.5);
@@ -236,9 +317,10 @@
         box-shadow: 1px 1px rgba(0,0,0,0.4);
         border-radius: 0px;
         text-align: center;
-        font-size: 14px;
+        font-size: 13px;
         height: 25px;
         margin: 0;
+        float: right;
     }
     button.titlebutton:hover {
         background: rgba(240, 240, 240, 0.5);
@@ -253,16 +335,17 @@
     }
     .titlebaricon {
         box-shadow: -1px -1px rgba(0,0,0,0.4) inset;
+        height:20px
     }
     .desktopicon,.icon {
         align-items: stretch;
         z-index: 1;
-        width: 175px;
+        width: 160px;
         height: 110px;
-        font-size: 14px;
+        font-size: 13px;
         text-align: center;
         vertical-align: top;
-        margin: 2.5px;
+        margin: 0px;
         padding: 5px;
         background: none;
         box-shadow: none;
@@ -299,5 +382,231 @@
         margin: 0px;
         margin-top: 2px;
         padding: 0px;
+    }
+    .titlebartitle {
+        vertical-align:top;
+        font-size:19px;
+        height: 19px;
+    }
+    .iframepea {
+        width:calc(100% - 20px);
+        height:calc(100% - 50px);
+    }
+    .windowiframe {
+        width:100%;
+        height:100%
+    }
+    .desktop {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: -1000;
+        width: 100vw;
+        height: calc(100vh + 140px);
+        margin: 0;
+        padding: 0;
+        z-index: -10003;
+        position: fixed;
+    }
+    .unmenuback {
+        background: rgb(177, 177, 177);
+        border: 1px solid;
+        border-color: rgba(0, 0, 0, 0.55);
+        position: fixed;
+        bottom: 0;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 55px;
+        padding-right: 10px;
+        line-height: 6px;
+        margin-left: 0px;
+        margin-top: 0px;
+        z-index: 10000000;
+        user-select: none; /* CSS3 */
+        -moz-user-select: none; /* Firefox */
+        -webkit-user-select: none; /* Safari、Chromeなど */
+        -ms-user-select: none; /* IE10かららしい */
+    }
+    .unmenu {
+        background:rgba(200, 251, 250, 0);
+        border: none;
+        height: 40px;
+        user-select: none; /* CSS3 */
+        -moz-user-select: none; /* Firefox */
+        -webkit-user-select: none; /* Safari、Chromeなど */
+        -ms-user-select: none; /* IE10かららしい */
+    }
+    .unmenu:hover {
+        background:rgba(250, 251, 250, 0.3);
+    }
+    .startbuttonimg {
+        opacity: 1;
+        height: 35px;
+        width: 35px;
+        font-size: 18px;
+        border: 1px solid;
+        border-color: rgba(0, 0, 0, 0.2);
+        border-radius: 0px;
+        background: rgba(255, 255, 255, 0.5);
+        filter: brightness(130%);
+        padding-left: 0px;
+        margin: 0px;
+        padding: 0px;
+    }
+    .clockcalendar {
+        background: none;
+        padding-left: 20%;
+    }
+    .clock, .calendar {
+        color: rgb(0, 0, 0);
+        background: rgba(100, 100, 100, 0);
+        border: none;
+        font-size: 18px;
+        outline: none;
+        height: 40px;
+        margin: 0px;
+        width: 140px;
+        text-align: right;
+        box-shadow: 2px 2px rgba(0,0,0,0.8) inset,-2px -2px rgba(255, 255, 255, 0.4) inset;
+    }
+    .clock:hover , .calendar:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .starticon {
+        margin: 3px;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 110px;
+        height: 110px;
+        border: 3px solid;
+        border-radius: 0px;
+        border-color: rgba(255, 255, 255, 0);
+        background: rgba(255, 255, 255, 0);
+        -webkit-transition: all 0.1s ease;
+        -moz-transition: all 0.1s ease;
+        -o-transition: all 0.1s ease;
+        transition: all  0.1s ease;
+        filter: brightness(200%);
+        filter: hue-rotate(0deg);
+    }
+    .starticon:hover {
+        background-color: rgba(90, 150, 173, 0.5);
+        border-color: rgba(90, 150, 173, 0.7);
+        filter: hue-rotate(0deg);
+    }
+    .starticon:active {
+        background-color: rgba(38, 74, 88, 0.5);
+        border-color: rgba(38, 74, 88, 0.7);
+        filter: hue-rotate(0deg);
+    }
+    .startmenu {
+        background: rgb(197, 197, 197);
+        position: absolute;
+        height: calc(50% + 30px);
+        width: 350px;
+        bottom: 165px;
+        user-select: none; /* CSS3 */
+        -moz-user-select: none; /* Firefox */
+        -webkit-user-select: none; /* Safari、Chromeなど */
+        -ms-user-select: none; /* IE10かららしい */
+        display: none;
+        z-index: 1000000;
+        border-radius: 0px 0px 0px 0px / 0px 0px 0px 0px;
+    }
+    .stsmenu {
+        width: 300px;
+        background: rgba(0, 0, 0, 0);
+        color: rgb(0, 0, 0);
+        outline: none;
+        border: none;
+        margin-top: 0.5px;
+        margin-bottom: 0.5px;
+        text-align:left;
+        font-size: 20px;
+        height: 40px;
+        padding-left: 10px;
+        box-shadow: none;
+    }
+    .stsmenu:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+    .stlmenus {
+        background: rgba(255, 255, 255, 0);
+        color: rgba(255, 255, 255, 1);
+        outline: none;
+        border: none;
+        height: 40px;
+        width: 130px;
+        font-size: 14px;
+        margin: 0px;
+        margin-bottom: 20px;
+        text-align:left;
+        padding-left: 3px;
+        border-radius: 2px;
+    }
+    .stlmenur {
+        background: linear-gradient(0deg, rgba(190, 212, 245, 0.4), rgba(121, 156, 207, 0.4),rgba(255, 255, 255, 0.4));
+        color: rgba(255, 255, 255, 1);
+        outline: none;
+        border: none;
+        height: 25px;
+        width: 110px;
+        font-size: 15px;
+        margin: 0px;
+        padding-left: 5px;
+        border-radius: 4px;
+        border: 1px solid;
+        border-color: rgba(0, 0, 0, 0.5);
+        text-align:left;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        height: 25px;
+    }
+    .stlmenus:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+    .stlmenur:hover {
+        background: linear-gradient(0deg, rgba(145, 174, 218, 0.8), rgba(121, 156, 207, 0.8),rgba(255, 255, 255, 0.8));
+    }
+    .scroll {
+        background: rgba(65, 65, 65, 0.097);
+        padding: 2.5px;
+        border: none;
+        margin: 5px;
+        margin-bottom: 70px;
+        float: left;
+        position: absolute;
+        overflow-y:scroll;
+        width: 330px;
+        height: calc(100% - 50px);
+    }
+    .scroll::-webkit-scrollbar {
+        display: none;
+    }
+    .stlm {
+        margin: 0px;
+        padding: 0px;
+        float: left;
+        bottom:5px;
+        left: 235px;
+        position: absolute;
+        width: calc(100% - 200px);
+        padding-left: 15px;
+        padding-right: 10px;
+        
+    }
+    .startbuttonarea {
+        border-radius: 0px;
+        height: calc(100% - 20px);
+        width: calc(100% - 15px);
+        margin-top: 5px;
+        margin-bottom: 10px;
+        padding: 4px;
+        background: rgb(186, 186, 186);
+        box-shadow: 2px 2px rgba(0,0,0,0.8),2px 2px 1px rgba(255, 255, 255, 0.4) inset;
     }
 </style>
