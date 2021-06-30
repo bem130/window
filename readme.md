@@ -1,5 +1,5 @@
 # Haruki1234  
-# Window
+## Window
 
 [Page Link]: https://haruki1234.github.io/window/
 
