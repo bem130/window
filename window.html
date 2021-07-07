@@ -119,6 +119,7 @@
             ["Javascript有効チェッカー","openw('../mainsite/js.html','haruki1234')"],
             ["テキスト数字変換","openw('../mainsite/2.html','haruki1234')"],
             ["問題を報告","openw('../mainsite/send-issue.html','ISSUE')"],
+            ["単語で計算","openw('../mainsite/word2vec.html','単語で計算','https://link-page.github.io/icon/word.png')",'https://link-page.github.io/icon/word.png'],
         ]
         desktop = software;
         startmenu = software;
@@ -160,6 +161,12 @@
                 for(i=0;i<usericons.length;i++){
                     startmenu.unshift(usericons[i]);
                 }
+            }
+            if (message.startup == null){
+                tmp = ""
+            }
+            else {
+                setTimeout(JSON.parse(decodeURIComponent(message.startup)),0);
             }
         }
 
