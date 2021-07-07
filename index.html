@@ -30,10 +30,13 @@
     </head>
     <body>
         <div style="position: absolute;top: 0;left: 0;margin: 0;padding: 0;width: 100%;height: 100%;">
-            <iframe src="window.html" class="view"></iframe>
+            <iframe class="view" id="window"></iframe>
         </div>
     </body>
 </html>
+<script>
+    document.getElementById("window").src = "window.html"+location.search
+</script>
 <style>
     body::-webkit-scrollbar {
         display: none;
