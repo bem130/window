@@ -119,55 +119,10 @@
             ["テキスト数字変換","openw('../mainsite/2.html','haruki1234')"],
             ["問題を報告","openw('../mainsite/send-issue.html','ISSUE')"],
             ["単語で計算","openw('../mainsite/word2vec.html','単語で計算','https://link-page.github.io/icon/word.png')",'https://link-page.github.io/icon/word.png'],
+            ["ブルスク作成","openw('../mainsite/bs.html','ブルスク作成')"],
         ]
         desktop = software;
         startmenu = software;
-        {
-            function para_get(){
-                var url_search = location.search.substr(1).split('&');
-                var para = [];
-                var key = null;
-                for(var i = 0 ; i < url_search.length ; i++){
-                    key = url_search[i].split("=");
-                    para[key[0]] = key[1];
-                }
-                return (para);
-            }
-            message = para_get();
-            if (message.software == null){
-                tmp = ""
-            }
-            else {
-                usericons = JSON.parse(decodeURIComponent(message.software));
-                for(i=0;i<usericons.length;i++){
-                    software.unshift(usericons[i]);
-                }
-            }
-            if (message.desktop == null){
-                tmp = ""
-            }
-            else {
-                usericons = JSON.parse(decodeURIComponent(message.desktop));
-                for(i=0;i<usericons.length;i++){
-                    desktop.unshift(usericons[i]);
-                }
-            }
-            if (message.startmenu == null){
-                tmp = ""
-            }
-            else {
-                usericons = JSON.parse(decodeURIComponent(message.startmenu));
-                for(i=0;i<usericons.length;i++){
-                    startmenu.unshift(usericons[i]);
-                }
-            }
-            if (message.startup == null){
-                tmp = ""
-            }
-            else {
-                setTimeout(JSON.parse(decodeURIComponent(message.startup)),0);
-            }
-        }
 
         outputhtml = ""
         for(i=0;i<desktop.length;i++){
@@ -270,6 +225,53 @@
    }
    setInterval('showClock()',1000);
    showClock();
+   
+   {
+            function para_get(){
+                var url_search = location.search.substr(1).split('&');
+                var para = [];
+                var key = null;
+                for(var i = 0 ; i < url_search.length ; i++){
+                    key = url_search[i].split("=");
+                    para[key[0]] = key[1];
+                }
+                return (para);
+            }
+            message = para_get();
+            if (message.software == null){
+                tmp = ""
+            }
+            else {
+                usericons = JSON.parse(decodeURIComponent(message.software));
+                for(i=0;i<usericons.length;i++){
+                    software.unshift(usericons[i]);
+                }
+            }
+            if (message.desktop == null){
+                tmp = ""
+            }
+            else {
+                usericons = JSON.parse(decodeURIComponent(message.desktop));
+                for(i=0;i<usericons.length;i++){
+                    desktop.unshift(usericons[i]);
+                }
+            }
+            if (message.startmenu == null){
+                tmp = ""
+            }
+            else {
+                usericons = JSON.parse(decodeURIComponent(message.startmenu));
+                for(i=0;i<usericons.length;i++){
+                    startmenu.unshift(usericons[i]);
+                }
+            }
+            if (message.startup == null){
+                tmp = ""
+            }
+            else {
+                setTimeout(JSON.parse(decodeURIComponent(message.startup)),0);
+            }
+        }
    </script>
    
 </html>
