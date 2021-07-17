@@ -1,4 +1,4 @@
-# Haruki1234 - Window [**Site Link**](https://haruki1234.github.io/window/)
+# Haruki1234 - Window # [**Site Link**](https://haruki1234.github.io/window/)
 
 ### これは、僕の元のサイトをパソコン(Windows)風に表示することを目的としたプロジェクトです。  
 ### 今は、Windows 95風を目指して作っていますが僕は使った事がありませんｗ。
