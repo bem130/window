@@ -1,9 +1,7 @@
-# Haruki1234 - Window
+# Haruki1234 - Window [**Site Link**](https://haruki1234.github.io/window/)
 
-## [**Site Link - haruki1234.github.io/window/**](https://haruki1234.github.io/window/)
-
-### これは、自分の元のサイトをパソコン(Windows)風に表示することを目的としたプロジェクトです。  
-### 今は、自分の使った事のないWindows 95風を目指して作っています。
+### これは、僕の元のサイトをパソコン(Windows)風に表示することを目的としたプロジェクトです。  
+### 今は、Windows 95風を目指して作っていますが僕は使った事がありませんｗ。
 
 #### This is a project that aims to display my original site like a personal computer (Windows).  
 #### Right now, I am aiming for Windows 95 style but I didn't use Windows 95.
