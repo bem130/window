@@ -21,6 +21,7 @@
         <meta charset="utf-8">
         <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+        <script src="../jsconsole/console.js"></script>
         <script>
         var firebaseConfig = {
             apiKey: "AIzaSyDLLs9K4E9UVTmP2XaHhn_UzXtlN1nCDXc",
@@ -94,7 +95,9 @@
     </body>
     <script>
         software = [
-            ["Bing","openw('https://bing.com','bing','https://www.bing.com/sa/simg/favicon-2x.ico')","https://www.bing.com/sa/simg/favicon-2x.ico"],
+            ["Wikipedia","openw('https://wikipedia.org','Wikipedia','https://wikipedia.org/static/favicon/wikipedia.ico')","https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png"],
+            ["Bing","openw('https://bing.com','Bing','https://www.bing.com/sa/simg/favicon-2x.ico')","https://www.bing.com/sa/simg/favicon-2x.ico"],
+            ["jQuery","openw('https://jquery.com/','jQuery','https://jquery.com/jquery-wp-content/themes/jquery.com/i/favicon.ico')","https://jquery.com/jquery-wp-content/themes/jquery.com/i/favicon.ico"],
             ["habuntu - LinuxProject","openw('../mylinuxproject','habuntu - LinuxProject')"],
             ["メモ","openw('../mainsite/memo.html','haruki1234','https://link-page.github.io/icon/memo.png')","https://link-page.github.io/icon/memo.png"],
             ["文字列繰り返し","openw('../mainsite/rere.html','haruki1234','https://link-page.github.io/icon/mojiretukurikaeshi.png')","https://link-page.github.io/icon/mojiretukurikaeshi.png"],
@@ -120,6 +123,7 @@
             ["問題を報告","openw('../mainsite/send-issue.html','ISSUE')"],
             ["単語で計算","openw('../mainsite/word2vec.html','単語で計算','https://link-page.github.io/icon/word.png')",'https://link-page.github.io/icon/word.png'],
             ["ブルスク作成","openw('../mainsite/bs.html','ブルスク作成')"],
+            ["コンソール","openw('../jsconsole?param=windowviewer','コンソール','https://haruki1234.github.io/jsconsole/icon/256.png')","https://haruki1234.github.io/jsconsole/icon/256.png"],
         ]
         desktop = software;
         startmenu = software;
