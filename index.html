@@ -46,6 +46,7 @@
 <script>
     document.getElementById("window").src = "window.html"+location.search
     function size(scale) {
+        scale = Number(scale)
         document.getElementById("window").style = "transform-origin: 0 0;transform: scale("+scale+");height: "+100/scale+"%;width: "+100/scale+"%;"
     }
 </script>

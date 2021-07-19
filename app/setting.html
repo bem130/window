@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>設定</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div>
+            <div>
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            表示サイズ
+                        </td>
+                        <td>
+                            <input type="range" id="size" min="0.6" max="1.4" step="0.01" style="width: 100%;">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    {
+        // -- size --
+        size = function(scale){window.top.size(scale)}
+        const inputElem = document.getElementById('size');
+        const rsize = (event) =>{
+            console.log(0)
+            size(event.target.value)
+        }
+        inputElem.addEventListener('input', rsize);
+    }
+</script>
