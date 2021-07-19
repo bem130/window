@@ -102,6 +102,7 @@
             ["Bing","openw('https://bing.com','Bing','https://www.bing.com/sa/simg/favicon-2x.ico')","https://www.bing.com/sa/simg/favicon-2x.ico"],
             ["jQuery","openw('https://jquery.com/','jQuery','https://jquery.com/jquery-wp-content/themes/jquery.com/i/favicon.ico')","https://jquery.com/jquery-wp-content/themes/jquery.com/i/favicon.ico"],
             ["habuntu - LinuxProject","openw('../mylinuxproject','habuntu - LinuxProject')"],
+            ["Setting","openw('./app/setting.html','Setting')"],
             ["メモ","openw('../mainsite/memo.html','haruki1234','https://link-page.github.io/icon/memo.png')","https://link-page.github.io/icon/memo.png"],
             ["文字列繰り返し","openw('../mainsite/rere.html','haruki1234','https://link-page.github.io/icon/mojiretukurikaeshi.png')","https://link-page.github.io/icon/mojiretukurikaeshi.png"],
             ["閃光おみくじ","openw('../mainsite/omikujiflash.html','haruki1234','https://link-page.github.io/icon/flashomikuji.png')","https://link-page.github.io/icon/flashomikuji.png"],
@@ -181,7 +182,7 @@
                     <div id="draggwindow`+openwindow+`" class="draggable dragwindow resize window">
                         <div class="titlebar">
                             <button onclick="$(this).parentsUntil()[3].remove();" class="titlebutton redbutton" style=""> × </button>
-                            <button onclick="$(this).parentsUntil()[1].style.width=[document.body.clientWidth-7]+'px';$(this).parentsUntil()[1].style.height=[document.documentElement.clientHeight-65]+'px';$(this).parentsUntil()[1].style.left='0';$(this).parentsUntil()[1].style.top='0'" class="titlebutton"> □ </button>
+                            <button onclick="$(this).parentsUntil()[1].style.width=[$('#destop').width()-9]+'px';$(this).parentsUntil()[1].style.height=[$('#destop').height()-10]+'px';$(this).parentsUntil()[1].style.left='0';$(this).parentsUntil()[1].style.top='0'" class="titlebutton"> □ </button>
                             <button onclick="$(this).parentsUntil()[2].style.display = 'none'" class="titlebutton"> ― </button>
                             <img src="`+icon+`" class="titlebaricon">
                             <span class="titlebartitle">`+title+`</span>
