@@ -21,7 +21,6 @@
         <meta charset="utf-8">
         <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
-        <script src="../jsconsole/console.js"></script>
         <script>
         var firebaseConfig = {
             apiKey: "AIzaSyDLLs9K4E9UVTmP2XaHhn_UzXtlN1nCDXc",
@@ -55,8 +54,9 @@
             </div>
         </div>
         <div id="desktop" class="desktop">
-            <div style="width: 100vw;height: 100vh;margin: 0;padding: 0;position: fixed;" id="background">
-                <div style="background-color: rgb(0,128,128);width: 100%;height: 100%;margin: 0;padding: 0;"></div>
+            <div style="width: 100vw;height: 100vh;margin: 0;padding: 0;position: absolute" id="backgroundarea">
+                <div style="width: 100vw;height: 100vh;margin: 0;padding: 0;position: absolute;z-index: 0;" id="backgroundarea"></div>
+                <iframe id="background" src="../mainsite/color.html?color=rgb(0%2C128%2C128)" style="top: 0;left: 0;width: 100vw;height: 100vh;margin: 0;padding: 0;position: absolute;z-index: -1;"></iframe>
             </div>
             <div class="unmenuback" style="user-select: none;">
                 <button id="start" class="unmenu startbutton" style="box-shadow: none;height: 100%;width: 150px;margin: 0px;padding: 0px;border: 0px solid;outline: none;z-index: 100;background: rgba(255, 255, 255, 0);float: left;" onclick='if(document.getElementById("startmenu").style.display != "block"){setTimeout(`document.getElementById("startmenu").style.display = "block"`,0)}'>
@@ -95,12 +95,31 @@
     </body>
     <script>
         {
-            size = function(scale){window.top.size(scale)}
+            size = function(scale){window.top.size(scale);return "set the display scale to "+scale}
+            scale = function(scale){window.top.size(scale);return "set the display scale set to "+scale}
+            background = {
+                color : function(color){document.getElementById("background").src="../mainsite/color.html?color="+encodeURIComponent(color);return "set the background color to "+color},
+                url : function(url){document.getElementById("background").src=url;return "set the background url to "+url},
+            }
+        }
+        {
+            $(function($){
+                //Ctrlキー+エンター
+                $(window).keydown(function(e){
+                    if(event.shiftKey){
+                        if(e.keyCode === 67){
+                            openw('../jsconsole?param=windowviewer','コンソール','https://haruki1234.github.io/jsconsole/icon/256.png');
+                            return false;
+                        }
+                    }
+                });
+            });
         }
         software = [
             ["Wikipedia","openw('https://wikipedia.org','Wikipedia','https://wikipedia.org/static/favicon/wikipedia.ico')","https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png"],
             ["Bing","openw('https://bing.com','Bing','https://www.bing.com/sa/simg/favicon-2x.ico')","https://www.bing.com/sa/simg/favicon-2x.ico"],
             ["jQuery","openw('https://jquery.com/','jQuery','https://jquery.com/jquery-wp-content/themes/jquery.com/i/favicon.ico')","https://jquery.com/jquery-wp-content/themes/jquery.com/i/favicon.ico"],
+            ["Google Maps","openw('https://google.com/maps/embed','Google Maps','https://www.google.com/images/branding/product/ico/maps15_bnuw3a_32dp.ico')","https://www.google.com/images/branding/product/ico/maps15_bnuw3a_32dp.ico"],
             ["habuntu - LinuxProject","openw('../mylinuxproject','habuntu - LinuxProject')"],
             ["Setting","openw('./app/setting.html','Setting')"],
             ["メモ","openw('../mainsite/memo.html','haruki1234','https://link-page.github.io/icon/memo.png')","https://link-page.github.io/icon/memo.png"],
@@ -152,24 +171,12 @@
         document.getElementById("startscrollarea").innerHTML = outputhtml;
     
 
-    document.oncontextmenu = function() {if(document.getElementById("startmenu").style.display != "block"){setTimeout(`document.getElementById("startmenu").style.display = "block"`,0)};$(function() {$(".desktopsoft").css({zIndex:-100});});return false}
-
+    document.oncontextmenu = function() {if(document.getElementById("startmenu").style.display != "block"){setTimeout(`document.getElementById("startmenu").style.display = "block"`,0)};return false}
 
     document.onclick = function() {
         document.getElementById("startmenu").style.display = "none"
     }
 
-    function background(data) {
-        if (data.type == "color") {
-            document.getElementById("background").innerHTML = `<div style="background-color: `+data.color+`;width: 100%;height: 100%;margin: 0;padding: 0;"></div>`
-        }
-        if (data.type == "url") {
-            document.getElementById("background").innerHTML = `<iframe src="`+data.url+`" style="width: 100%;height: 100%;margin: 0;padding: 0;">`
-        }
-        if (data.type == "img") {
-            document.getElementById("background").innerHTML = `<img src="`+data.url+`" style="widht: 100%;height: 100%;margin: 0;padding: 0;">`
-        }
-    }
 
     openwindow = 0;
     function openw(url,title,icon) {
@@ -194,7 +201,6 @@
                 </div>
                 `
         document.getElementById("window").appendChild(new_element)
-
         $(function() {
             $('.movetable').sortable({
                 handle: 'div.titlebar',
@@ -212,12 +218,9 @@
             });
             openwindow++;
         });
+        return 'opened a new window "'+title+'"'
     }
-
-    
-
     function set2fig(num) {
-      // 桁数が1桁だったら先頭に0を加えて2桁に調整する
       var ret;
       if( num < 10 ) { ret = "0" + num; }
       else { ret = num; }
@@ -331,8 +334,8 @@
     }
     .window {
         background:rgb(200,200,200,1);
-        width: 500px;
-        height: 350px;
+        width: 50%;
+        height: 50%;
         z-index: 1;
         box-shadow: 2px 2px rgba(0,0,0,0.5),-1px -1px rgba(0,0,0,0.4);
         position: fixed;
