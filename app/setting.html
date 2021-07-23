@@ -33,3 +33,20 @@
         inputElem.addEventListener('input', rsize);
     }
 </script>
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+<script>
+var firebaseConfig = {
+    apiKey: "AIzaSyDLLs9K4E9UVTmP2XaHhn_UzXtlN1nCDXc",
+    authDomain: "github-b0aea.firebaseapp.com",
+    projectId: "github-b0aea",
+    storageBucket: "github-b0aea.appspot.com",
+    messagingSenderId: "539611850738",
+    appId: "1:539611850738:web:57da8d1bd3bcf69a7a2d6b",
+    measurementId: "G-F2XPLPFDJ5"
+};
+firebase.initializeApp(firebaseConfig);
+if (location.hostname == "haruki1234.github.io") {
+    firebase.analytics();
+}
+</script>

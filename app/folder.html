@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>folder</title>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+            <div>
+                <div style="width: 100%;margin: 0;padding: 0;position: absolute;top: 0;left: 0;" id="icon">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    openw = window.parent.openw
+    function para_get()
+    {
+        var url_search = location.search.substr(1).split('&');
+        var para = [];
+        var key = null;
+     
+        for(var i = 0 ; i < url_search.length ; i++)
+        {
+            key = url_search[i].split("=");
+            para[key[0]] = key[1];
+        }
+        return (para);
+    }
+    message = para_get();
+
+    file = JSON.parse(decodeURIComponent(message.data));
+
+    outputhtml = ""
+    for(i=0;i<file.length;i++){
+        if (file[i][2] == null) {
+            file[i][2] = "https://link-page.github.io/icon/time.gif"
+        }
+        outputhtml += `<button class="desktopicon" onclick="`+file[i][1]+`"><div class="indesktopicon"><img class="desktopiconimg" src="`+file[i][2]+`"><span class="desktopicontxt">`+file[i][0]+`</span></div></button>`
+    }
+    document.getElementById("icon").innerHTML = outputhtml
+</script>
+<style>
+    .desktopicon,.icon {
+        align-items: stretch;
+        z-index: 1;
+        width: 160px;
+        height: 110px;
+        font-size: 13px;
+        text-align: center;
+        vertical-align: top;
+        margin: 0px;
+        padding: 5px;
+        background: none;
+        box-shadow: none;
+        border: none;
+    }
+    .desktopicon:hover,.icon:hover {
+        background-color: rgba(238, 250, 255, 0.8);
+        border-color: rgba(0,0,0,0.1);
+    }
+    .indesktopicon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: rgb(255,255,255);
+        font-family: "ntihayafont+";
+        text-shadow:
+            1px 0 2px rgb(0,0,0),
+            0px 1px 2px rgb(0,0,0),
+            -1px 0px 1px rgb(0,0,0),
+            0px -1px 1px rgb(0,0,0);
+    }
+    .desktopiconimg {
+        height: 75px;
+        width: 75px;
+        margin: 0px;
+        padding: 0px;
+    }
+    .desktopicontxt {
+        margin: 0px;
+        margin-top: 2px;
+        padding: 0px;
+    }
+</style>
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+<script>
+var firebaseConfig = {
+    apiKey: "AIzaSyDLLs9K4E9UVTmP2XaHhn_UzXtlN1nCDXc",
+    authDomain: "github-b0aea.firebaseapp.com",
+    projectId: "github-b0aea",
+    storageBucket: "github-b0aea.appspot.com",
+    messagingSenderId: "539611850738",
+    appId: "1:539611850738:web:57da8d1bd3bcf69a7a2d6b",
+    measurementId: "G-F2XPLPFDJ5"
+};
+firebase.initializeApp(firebaseConfig);
+if (location.hostname == "haruki1234.github.io") {
+    firebase.analytics();
+}
+</script>

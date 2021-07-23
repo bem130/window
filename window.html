@@ -120,7 +120,7 @@
             ["Bing","openw('https://bing.com','Bing','https://www.bing.com/sa/simg/favicon-2x.ico')","https://www.bing.com/sa/simg/favicon-2x.ico"],
             ["jQuery","openw('https://jquery.com/','jQuery','https://jquery.com/jquery-wp-content/themes/jquery.com/i/favicon.ico')","https://jquery.com/jquery-wp-content/themes/jquery.com/i/favicon.ico"],
             ["Google Maps","openw('https://google.com/maps/embed','Google Maps','https://www.google.com/images/branding/product/ico/maps15_bnuw3a_32dp.ico')","https://www.google.com/images/branding/product/ico/maps15_bnuw3a_32dp.ico"],
-            ["habuntu - LinuxProject","openw('../mylinuxproject','habuntu - LinuxProject')"],
+            ["habuntu - LinuxProject","openw('../mylinuxproject','habuntu - LinuxProject','icon/docx.png')",'icon/docx.png'],
             ["Setting","openw('./app/setting.html','Setting')"],
             ["メモ","openw('../mainsite/memo.html','haruki1234','https://link-page.github.io/icon/memo.png')","https://link-page.github.io/icon/memo.png"],
             ["文字列繰り返し","openw('../mainsite/rere.html','haruki1234','https://link-page.github.io/icon/mojiretukurikaeshi.png')","https://link-page.github.io/icon/mojiretukurikaeshi.png"],
@@ -137,16 +137,17 @@
             ["なんか綺麗な奴","openw('../mainsite/sinwave.html','haruki1234','https://link-page.github.io/icon/icon (28).png')","https://link-page.github.io/icon/icon (28).png"],
             ["背景","openw('../mainsite/background.html','haruki1234','https://link-page.github.io/icon/icon (29).png')","https://link-page.github.io/icon/icon (29).png"],
             ["python - じゃんけん","openw('../janken/index.html','haruki1234','https://link-page.github.io/icon/Janken.png')","https://link-page.github.io/icon/Janken.png"],
-            ["pythonで適当に作った奴","openw('../pythons/index.html','haruki1234')"],
-            ["C#で適当に作った奴","openw('../winapp_cs/index.html','haruki1234')"],
-            ["旧サイト","openw('../old-sites/index.html','haruki1234')"],
-            ["DiscordのBot(自作)","openw('../mainsite/discord-bot.html','haruki1234')"],
-            ["Javascript有効チェッカー","openw('../mainsite/js.html','haruki1234')"],
-            ["テキスト数字変換","openw('../mainsite/2.html','haruki1234')"],
-            ["問題を報告","openw('../mainsite/send-issue.html','ISSUE')"],
+            ["pythonで適当に作った奴","openw('../pythons/index.html','haruki1234','icon/docx.png')",'icon/docx.png'],
+            ["C#で適当に作った奴","openw('../winapp_cs/index.html','haruki1234','icon/docx.png')",'icon/docx.png'],
+            ["旧サイト","openw('../old-sites/index.html','haruki1234','icon/docx.png')",'icon/docx.png'],
+            ["DiscordのBot(自作)","openw('../mainsite/discord-bot.html','haruki1234')",'icon/docx.png'],
+            ["Javascript有効チェッカー","openw('../mainsite/js.html','haruki1234','icon/docx.png')",'icon/docx.png'],
+            ["テキスト数字変換","openw('../mainsite/2.html','haruki1234','icon/docx.png')",'icon/docx.png'],
+            ["問題を報告","openw('../mainsite/send-issue.html','ISSUE','icon/docx.png')",'icon/docx.png'],
             ["単語で計算","openw('../mainsite/word2vec.html','単語で計算','https://link-page.github.io/icon/word.png')",'https://link-page.github.io/icon/word.png'],
-            ["ブルスク作成","openw('../mainsite/bs.html','ブルスク作成')"],
-            ["コンソール","openw('../jsconsole?param=windowviewer','コンソール','https://haruki1234.github.io/jsconsole/icon/256.png')","https://haruki1234.github.io/jsconsole/icon/256.png"],
+            ["ブルスク作成","openw('../mainsite/bs.html','ブルスク作成','icon/docx.png')",'icon/docx.png'],
+            ["コンソール","openw('../jsconsole?param=windowviewer','コンソール','https://haruki1234.github.io/jsconsole/icon/256x.png')","https://haruki1234.github.io/jsconsole/icon/256x.png"],
+            ["Scratchの","openw(`../window/app/folder.html?data="+encodeURIComponent(JSON.stringify([["ボール叩き","openw('https://scratch.mit.edu/projects/555129958/embed','ボール叩き','https://scratch.mit.edu/favicon.ico')","https://scratch.mit.edu/favicon.ico"]]))+"`"+`,'Scratchの','icon/folderx.png')`,'https://scratch.mit.edu/favicon.ico'],
         ]
         desktop = software;
         startmenu = software;
@@ -195,7 +196,7 @@
                             <span class="titlebartitle">`+title+`</span>
                         </div>
                         <div class="iframepea">
-                            <iframe class="scaleiframe" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" src="`+url+`"></iframe>
+                            <iframe class="scaleiframe"  id="draggwindow`+openwindow+`siframe" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" src="`+url+`"></iframe>
                         </div>
                     </div>
                 </div>
@@ -382,7 +383,7 @@
         border: none;
     }
     .desktopicon:hover,.icon:hover {
-        background-color: none;
+        background-color: rgba(238, 250, 255, 0.8);
         border-color: rgba(0,0,0,0.1);
     }
     .indesktopicon,.inicon {

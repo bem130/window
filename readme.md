@@ -13,4 +13,3 @@
 | 2021/6 | 公開 Release |
 | 2021/6 | サイズの自動変更 automatically resize |
 | 2021/7 | PWAに対応 Compatible with PWA |
-| 2021/7 | コンソールを追加 Add console |
