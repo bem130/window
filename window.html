@@ -94,6 +94,10 @@
         <div style="width: 100%;height: calc(100vh - 55px);margin: 0;padding: 0;position: fixed;top: 0;left: 0;z-index: -50000;" id="destop" class="destop"></div>
     </body>
     <script>
+        path = {
+            color : "openw('../mainsite/color.config.html','カラー','icon/docx.png')",
+            start : "openw('../jsconsole?param=windowviewer','コンソール','https://haruki1234.github.io/jsconsole/icon/256x.png')",
+        }
         {
             size = function(scale){window.top.size(scale);return "set the display scale to "+scale}
             scale = function(scale){window.top.size(scale);return "set the display scale set to "+scale}
@@ -104,7 +108,6 @@
         }
         {
             $(function($){
-                //Ctrlキー+エンター
                 $(window).keydown(function(e){
                     if(event.shiftKey){
                         if(e.keyCode === 67){
@@ -121,6 +124,7 @@
             ["jQuery","openw('https://jquery.com/','jQuery','https://jquery.com/jquery-wp-content/themes/jquery.com/i/favicon.ico')","https://jquery.com/jquery-wp-content/themes/jquery.com/i/favicon.ico"],
             ["Google Maps","openw('https://google.com/maps/embed','Google Maps','https://www.google.com/images/branding/product/ico/maps15_bnuw3a_32dp.ico')","https://www.google.com/images/branding/product/ico/maps15_bnuw3a_32dp.ico"],
             ["habuntu - LinuxProject","openw('../mylinuxproject','habuntu - LinuxProject','icon/docx.png')",'icon/docx.png'],
+            ["動くやつ","openw('../mainsite/move.html','動くやつ','icon/docx.png')",'icon/docx.png'],
             ["Setting","openw('./app/setting.html','Setting')"],
             ["メモ","openw('../mainsite/memo.html','haruki1234','https://link-page.github.io/icon/memo.png')","https://link-page.github.io/icon/memo.png"],
             ["文字列繰り返し","openw('../mainsite/rere.html','haruki1234','https://link-page.github.io/icon/mojiretukurikaeshi.png')","https://link-page.github.io/icon/mojiretukurikaeshi.png"],
@@ -148,7 +152,7 @@
             ["ブルスク作成","openw('../mainsite/bs.html','ブルスク作成','icon/docx.png')",'icon/docx.png'],
             ["カラー","openw('../mainsite/color.config.html','カラー','icon/docx.png')",'icon/docx.png'],
             ["コンソール","openw('../jsconsole?param=windowviewer','コンソール','https://haruki1234.github.io/jsconsole/icon/256x.png')","https://haruki1234.github.io/jsconsole/icon/256x.png"],
-            ["Scratchの","openw(`../window/app/folder.html?data="+encodeURIComponent(JSON.stringify([["ボール叩き","openw('https://scratch.mit.edu/projects/555129958/embed','ボール叩き','https://scratch.mit.edu/favicon.ico')","https://scratch.mit.edu/favicon.ico"]]))+"`"+`,'Scratchの','icon/folderx.png')`,'https://scratch.mit.edu/favicon.ico'],
+            ["Scratchの","openw(`../window/app/folder.html?data="+encodeURIComponent(JSON.stringify([["ボール叩き","openw('https://scratch.mit.edu/projects/555129958/embed','ボール叩き','https://scratch.mit.edu/favicon.ico')","https://scratch.mit.edu/favicon.ico"],["飛ぶネコ","openw('https://scratch.mit.edu/projects/555701807/embed','飛ぶネコ','https://scratch.mit.edu/favicon.ico')","https://scratch.mit.edu/favicon.ico"]]))+"`"+`,'Scratchの','icon/folderx.png')`,'https://scratch.mit.edu/favicon.ico'],
         ]
         desktop = software;
         startmenu = software;
