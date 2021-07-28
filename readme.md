@@ -8,8 +8,8 @@
 
 ## プロジェクト開始の理由 Reason for starting the project 
 その日はテスト5日前だった。だから何か作りたかった。  
-私は言った！「テスト5日前だからなんか作るぞ！」
-で、これを作り始めた。
+私は言った！「テスト5日前だからなんか作るぞ！」  
+で、これを作り始めた。  
  
 That day was 5 days before the exam.So I wanted to make something.  
 I said! "I'll make something because it's 5 days before the test!"  
