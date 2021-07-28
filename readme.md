@@ -7,11 +7,11 @@
 #### Right now, I am aiming for Windows 95 style but I didn't use Windows 95. 
 
 ## プロジェクト開始の理由 Reason for starting the project 
-その日はテスト5日前だった。だから何か作りたかった。 
+その日はテスト5日前だった。だから何か作りたかった。  
 で、これを作り始めた。
  
-That day was 5 days before the exam.So I wanted to make something. 
-So I started making this. 
+That day was 5 days before the exam.So I wanted to make something.  
+So I started making this.  
 
 ## 進展 Progress
 
