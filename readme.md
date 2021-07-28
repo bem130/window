@@ -15,6 +15,9 @@ That day was 5 days before the exam.So I wanted to make something.
 I said! "I'll make something because it's 5 days before the test!"  
 So I started making this.  
 
+## プレビュー Preview
+![プレビュー](https://haruki1234.github.io/window/preview/harukisite%20-%20Window%20Viewer%20-%20Preview.png "プレビュー")
+
 ## 進展 Progress
 
 | 日付 | 内容 |
