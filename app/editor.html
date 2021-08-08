@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>editor</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div>
+            <textarea id="txarea" style="position: absolute;margin: 0;padding: 10px;width: 100%;height: 100%;top: 0;left: 0;resize: none;outline: none;font-size: 23px;background: none;border: none;"></textarea>
+        </div>
+    </body>
+</html>
+<script>
+    document.getElementById("txarea").focus()
+</script>
+<style>
+    body::-webkit-scrollbar {
+        display: none;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap');
+    textarea {
+        font-family: 'Noto Sans JP', sans-serif;
+    }
+</style>
