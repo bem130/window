@@ -71,6 +71,22 @@
         scale = Number(scale)
         document.getElementById("window").style = "transform-origin: 0 0;transform: scale("+scale+");height: "+100/scale+"%;width: "+100/scale+"%;"
     }
+
+// safari 拡大縮小阻止
+// 参考 https://iphone.f-tools.net/html5/Kakudai-Kinsi.html
+document.documentElement.addEventListener('touchstart', function (e) {
+    if (e.touches.length >= 2) {e.preventDefault();}
+}, {passive: false});
+
+var t = 0;
+document.documentElement.addEventListener('touchend', function (e) {
+var now = new Date().getTime();
+if ((now - t) < 350){
+    e.preventDefault();
+}
+t = now;
+}, false);
+
 </script>
 <style>
     body::-webkit-scrollbar {
